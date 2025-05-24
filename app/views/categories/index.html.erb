@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Categoria" %>
+
+<h1>Categoria</h1>
+
+<%= link_to "Nova categoria", new_category_path %>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @categories.each do |category| %>
+    <%= render 'table_row', category: category %>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,9 @@
+<tr>
+  <th scope="row"><%= category.id %></th>
+  <td style="width: 250px;"><%= category.name %></td>
+  <td style="width: 50%;"><%= category.descrition %></td>
+  <td style="display: flex;">
+    <%= link_to "Editar", edit_category_path(category) %>
+    <%= button_to "Excluir", @ategory, method: :delete %>
+  </td>
+</tr>
