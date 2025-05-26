@@ -3,7 +3,7 @@
   <td style="width: 250px;"><%= category.name %></td>
   <td style="width: 50%;"><%= category.descrition %></td>
   <td style="display: flex;">
-    <%= link_to "Editar", edit_category_path(category) %>
-    <%= button_to "Excluir", @ategory, method: :delete %>
+    <%= link_to  '<i class="bi bi-pencil-square"></i>'.html_safe, edit_category_path(category), class: 'btn btn-info mx-1' %>
+    <%= button_to raw('<i class="bi bi-trash"></i>'), @ategory, method: :delete, class: 'btn btn-danger mx-1' %>
   </td>
 </tr>

@@ -1,0 +1,32 @@
+<%= form_with(model: stock) do |form| %>
+  <% if stock.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+
+      <ul>
+        <% stock.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :product_id, style: "display: block" %>
+    <%= form.select :product_id, @products.map{|product| [product.name, product.id]}, include_blank: 'Selecione' %>
+  </div>
+
+  <div>
+    <%= form.label :quantity, style: "display: block" %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div>
+    <%= form.label :entry_date, style: "display: block" %>
+    <%= form.date_field :entry_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

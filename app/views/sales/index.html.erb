@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Sales" %>
+
+<h1>Venda</h1>
+
+
+<%= link_to "Criar venda", new_sale_path, class: 'btn btn-primary' %>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Produto</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @sales.each do |sale| %>
+    <%= render 'table_row', sale: sale %>
+  <% end %>
+  </tbody>
+</table>
