@@ -12,6 +12,7 @@ class SalesController < ApplicationController
 
   # GET /sales/1 or /sales/1.json
   def show
+    @payment = Payment.new
   end
 
   # GET /sales/new
@@ -32,8 +33,8 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       if @sale.save
-        # UpdateStock.new(sale_params).call
-        :update_stock
+        UpdateStock.new(sale_params).call
+        # :update_stock
         format.html { redirect_to @sale, notice: "Sale was successfully created." }
         format.json { render :show, status: :created, location: @sale }
       else

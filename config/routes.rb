@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payments
   resources :sales
   resources :stocks
   root "homes#index"
