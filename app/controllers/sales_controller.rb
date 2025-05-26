@@ -34,8 +34,7 @@ class SalesController < ApplicationController
     respond_to do |format|
       if @sale.save
         UpdateStock.new(sale_params).call
-        # :update_stock
-        format.html { redirect_to @sale, notice: "Sale was successfully created." }
+        format.html { redirect_to sales_path, notice: "Sale was successfully created." }
         format.json { render :show, status: :created, location: @sale }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -84,21 +83,5 @@ class SalesController < ApplicationController
 
     def fetch_products
       @products = Product.all
-    end
-
-    def update_stock
-      stock = Stock.find_by(product_id: @sale.product_id)
-
-      if stock.present?
-        new_quantity = stock.quantity - @sale.quantity
-
-
-        if new_quantity >= 0
-          stock.update(quantity: new_quantity)
-        else
-          # Lógica de erro, por exemplo:
-          raise "Estoque insuficiente para o produto #{@sale.product_id}"
-        end
-      end
     end
 end
