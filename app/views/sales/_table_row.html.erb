@@ -1,5 +1,5 @@
 <tr>
-  <th scope="row"><%= link_to  sale.id.to_s, sale_path(sale), title: 'Ir para pagamento', data: { bs_toggle: "modal", bs_target: "#exampleModal" }   %></th>
+  <th scope="row"><%= link_to  sale.id.to_s, sale_path(sale), title: 'Ir para pagamento', data: { bs_toggle: "modal", bs_target: "#modal#{sale.id}" }   %></th>
   <td><%= sale.product.name %></td>
   <td><%= sale.quantity %></td>
   <td><%= number_to_currency(sale.total, locale: 'pt-BR') %></td>
@@ -13,7 +13,7 @@
 </tr>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal<%= sale.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -21,7 +21,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Cliente: <%= sale.customer.name %></p>
+        <p>Cliente: <%= sale.id %> - <%= sale.customer.name %></p>
         <p>Produto: <%= sale.product.name %></p>
         <p>Quantidade: <%= sale.quantity %></p>
         <p>Valor total: <%= number_to_currency(sale.total, locale: 'pt-BR') %></p>

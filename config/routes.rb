@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  root "homes#index"
+
+  devise_for :users
   resources :payments
   resources :sales do
     resources :payments, only: [:new, :create]
   end
   resources :stocks
-  root "homes#index"
-
   resources :homes
   resources :products
   resources :customers

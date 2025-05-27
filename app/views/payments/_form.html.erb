@@ -16,7 +16,7 @@
   <%= form.hidden_field :value, value: @sale.total %>
 
   <h2>Pagamento da Venda ##<%= @sale.id %></h2>
-  <p><strong>Valor total:</strong> <%= number_to_currency(@sale.total, locale: 'pt-BR') %></p>
+  <p>Valor total:<strong><%= number_to_currency(@sale.total, locale: 'pt-BR') %></strong> </p>
 
   <div>
     <%= form.label :value, style: "display: block" %>
