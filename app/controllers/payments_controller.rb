@@ -12,6 +12,7 @@ class PaymentsController < ApplicationController
 
   # GET /payments/new
   def new
+    @sale = Sale.find(params[:sale_id])
     @payment = Payment.new
   end
 
@@ -25,7 +26,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: "Payment was successfully created." }
+        format.html { redirect_to sales_path, notice: "Payment was successfully created." }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +66,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.require(:payment).permit(:value, :method)
+      params.require(:payment).permit(:value, :method, :sale_id)
     end
 end

@@ -11,9 +11,16 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :sale_id, value: @sale.id %>
+
+  <%= form.hidden_field :value, value: @sale.total %>
+
+  <h2>Pagamento da Venda ##<%= @sale.id %></h2>
+  <p><strong>Valor total:</strong> <%= number_to_currency(@sale.total, locale: 'pt-BR') %></p>
+
   <div>
     <%= form.label :value, style: "display: block" %>
-    <%= form.text_field :value %>
+    <%= form.text_field :value, value: number_to_currency(@sale.total, locale: 'pt-BR') %>
   </div>
 
   <div>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :payments
-  resources :sales
+  resources :sales do
+    resources :payments, only: [:new, :create]
+  end
   resources :stocks
   root "homes#index"
 

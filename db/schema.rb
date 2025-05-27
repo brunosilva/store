@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_05_26_183700) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_27_135231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_26_183700) do
     t.string "method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sale_id", null: false
+    t.index ["sale_id"], name: "index_payments_on_sale_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -68,6 +70,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_05_26_183700) do
     t.index ["product_id"], name: "index_stocks_on_product_id"
   end
 
+  add_foreign_key "payments", "sales"
   add_foreign_key "products", "categories"
   add_foreign_key "sales", "customers"
   add_foreign_key "sales", "products"
