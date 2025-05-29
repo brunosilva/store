@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "homes#index"
 
-  devise_for :users
+  devise_for :users, only: %i[sessions registrations passwords]
   resources :payments
   resources :sales do
     resources :payments, only: [:new, :create]

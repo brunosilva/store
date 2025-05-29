@@ -3,7 +3,7 @@
   <td><%= sale.product.name %></td>
   <td><%= sale.quantity %></td>
   <td><%= number_to_currency(sale.total, locale: 'pt-BR') %></td>
-  <td style="display: flex;">
+  <td>
     <% if sale.payments.any? %>
       <span class="text-success">Pago</span>
     <% else %>
